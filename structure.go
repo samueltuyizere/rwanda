@@ -1,34 +1,37 @@
 package rwanda
 
-type Province struct{
+type Provinces []Province
+
+type Province struct {
 	Id int `json:"id"`
 	Name string `json:"name"`
-	Districts []District
+	Districts []District `json:"districts"`
+}
+type Village struct {
+	Id int `json:"id"`
+	Name string `json:"name"`
+	CellID int `json:"cell_id"`
+}
+type Cell struct {
+	Id int `json:"id"`
+	Name string `json:"name"`
+	SectorID int `json:"sector_id"`
+	Villages []Village `json:"villages"`
+}
+type Sector struct {
+	Id int `json:"id"`
+	Name string `json:"name"`
+	DistrictID int `json:"district_id"`
+	Cells []Cell `json:"cells"`
+}
+type District struct {
+	Id int `json:"id"`
+	Name string `json:"name"`
+	ProvinceID string `json:"province_id"`
+	Sectors []Sector `json:"sectors"`
 }
 
-type District struct{
+type StandaloneEntity struct {
 	Id int `json:"id"`
 	Name string `json:"name"`
-	ProvinceId int `json:"province_id"`
-	Sectors []Sector
-}
-
-type Sector struct{
-	Id int `json:"id"`
-	Name string `json:"name"`
-	DistrictId int `json:"district_id"`
-	Cells []Cell
-}
-
-type Cell struct{
-	Id int `json:"id"`
-	Name string `json:"name"`
-	SectorId int `json:"sector_id"`
-	Villages []Village
-}
-
-type Village struct{
-	Id int `json:"id"`
-	Name string `json:"name"`
-	CellId int `json:"cell_id"`
 }
