@@ -26,7 +26,7 @@ func main(){
 ```
 
 ## Upcoming
-- [] Tests
+- [ ] Tests
 
 
 ## Contributing
