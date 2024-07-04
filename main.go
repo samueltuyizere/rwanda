@@ -1,282 +1,91 @@
 package rwanda
 
 // get all data
-func GetAllRegions() *AllData{
+func GetAllRegions() Provinces{
 	LoadData()
 	return Data
 }
 // get all provinces
-func GetAllProvinces() []Province{
+func GetAllProvinces() []StandaloneEntity {
 	LoadData()
-	return Data.Provinces
-}
-// get a province by id
-func GetProvinceById(id int) Province{
-	LoadData()
-	for _, province := range Data.Provinces{
-		if province.Id == id{
-			return province
-		}
+	var provinces []StandaloneEntity
+	for _, province := range Data {
+		provinces = append(provinces, StandaloneEntity{
+			Id: province.Id,
+			Name: province.Name,
+		})
 	}
-	return Province{}
+	return provinces
 }
+
 // get all districts
-func GetAllDistricts() []District{
+func GetAllDistricts() []StandaloneEntity{
 	LoadData()
-	var districts []District
-	for _, province := range Data.Provinces{
-		districts = append(districts, province.Districts...)
+	var districts []StandaloneEntity
+	for _, province := range Data {
+		for _, district := range province.Districts {
+			districts = append(districts, StandaloneEntity{
+				Id: district.Id,
+				Name: district.Name,
+			})
+		}
 	}
 	return districts
 }
-// get a district by id
-func GetDistrictById(id int) District{
-	LoadData()
-	for _, province := range Data.Provinces{
-		for _, district := range province.Districts{
-			if district.Id == id{
-				return district
-			}
-		}
-	}
-	return District{}
-}
-// get all districts in a province
-func GetDistrictsInProvince(provinceId int) []District{
-	LoadData()
-	for _, province := range Data.Provinces{
-		if province.Id == provinceId{
-			return province.Districts
-		}
-	}
-	return []District{}
-}
+
 // get all sectors
-func GetAllSectors() []Sector{
+func GetAllSectors() []StandaloneEntity{
 	LoadData()
-	var sectors []Sector
-	for _, province := range Data.Provinces{
-		for _, district := range province.Districts{
-			sectors = append(sectors, district.Sectors...)
+	var sectors []StandaloneEntity
+	for _, province := range Data {
+		for _, district := range province.Districts {
+			for _, sector := range district.Sectors {
+				sectors = append(sectors, StandaloneEntity{
+					Id: sector.Id,
+					Name: sector.Name,
+				})
+			}
 		}
 	}
 	return sectors
 }
-// get a sector by id
-func GetSectorById(id int) Sector{
-	LoadData()
-	for _, province := range Data.Provinces{
-		for _, district := range province.Districts{
-			for _, sector := range district.Sectors{
-				if sector.Id == id{
-					return sector
-				}
-			}
-		}
-	}
-	return Sector{}
-}
-// get all sectors in a district
-func GetSectorsInDistrict(districtId int) []Sector{
-	LoadData()
-	for _, province := range Data.Provinces{
-		for _, district := range province.Districts{
-			if district.Id == districtId{
-				return district.Sectors
-			}
-		}
-	}
-	return []Sector{}
-}
+
 // get all cells
-func GetAllCells() []Cell{
+func GetAllCells() []StandaloneEntity{
 	LoadData()
-	var cells []Cell
-	for _, province := range Data.Provinces{
-		for _, district := range province.Districts{
-			for _, sector := range district.Sectors{
-				cells = append(cells, sector.Cells...)
+	var cells []StandaloneEntity
+	for _, province := range Data {
+		for _, district := range province.Districts {
+			for _, sector := range district.Sectors {
+				for _, cell := range sector.Cells {
+					cells = append(cells, StandaloneEntity{
+						Id: cell.Id,
+						Name: cell.Name,
+					})
+				}
 			}
 		}
 	}
 	return cells
 }
-// get a cell by id
-func GetCellById(id int) Cell{
-	LoadData()
-	for _, province := range Data.Provinces{
-		for _, district := range province.Districts{
-			for _, sector := range district.Sectors{
-				for _, cell := range sector.Cells{
-					if cell.Id == id{
-						return cell
-					}
-				}
-			}
-		}
-	}
-	return Cell{}
-}
-// get all cells in a sector
-func GetCellsInSector(sectorId int) []Cell{
-	LoadData()
-	for _, province := range Data.Provinces{
-		for _, district := range province.Districts{
-			for _, sector := range district.Sectors{
-				if sector.Id == sectorId{
-					return sector.Cells
-				}
-			}
-		}
-	}
-	return []Cell{}
-}
+
 // get all villages
-func GetAllVillages() []Village{
+func GetAllVillages() []StandaloneEntity{
 	LoadData()
-	var villages []Village
-	for _, province := range Data.Provinces{
-		for _, district := range province.Districts{
-			for _, sector := range district.Sectors{
-				for _, cell := range sector.Cells{
-					villages = append(villages, cell.Villages...)
+	var villages []StandaloneEntity
+	for _, province := range Data {
+		for _, district := range province.Districts {
+			for _, sector := range district.Sectors {
+				for _, cell := range sector.Cells {
+					for _, village := range cell.Villages {
+						villages = append(villages, StandaloneEntity{
+							Id: village.Id,
+							Name: village.Name,
+						})
+					}
 				}
 			}
 		}
 	}
 	return villages
-}
-// get a village by id
-func GetVillageById(id int) Village{
-	LoadData()
-	for _, province := range Data.Provinces{
-		for _, district := range province.Districts{
-			for _, sector := range district.Sectors{
-				for _, cell := range sector.Cells{
-					for _, village := range cell.Villages{
-						if village.Id == id{
-							return village
-						}
-					}
-				}
-			}
-		}
-	}
-	return Village{}
-}
-// get all villages in a cell
-func GetVillagesInCell(cellId int) []Village{
-	LoadData()
-	for _, province := range Data.Provinces{
-		for _, district := range province.Districts{
-			for _, sector := range district.Sectors{
-				for _, cell := range sector.Cells{
-					if cell.Id == cellId{
-						return cell.Villages
-					}
-				}
-			}
-		}
-	}
-	return []Village{}
-}
-// get all villages in a sector
-func GetVillagesInSector(sectorId int) []Village{
-	LoadData()
-	for _, province := range Data.Provinces{
-		for _, district := range province.Districts{
-			for _, sector := range district.Sectors{
-				if sector.Id == sectorId{
-					var villages []Village
-					for _, cell := range sector.Cells{
-						villages = append(villages, cell.Villages...)
-					}
-					return villages
-				}
-			}
-		}
-	}
-	return []Village{}
-}
-// get all villages in a district
-func GetVillagesInDistrict(districtId int) []Village{
-	LoadData()
-	for _, province := range Data.Provinces{
-		for _, district := range province.Districts{
-			if district.Id == districtId{
-				var villages []Village
-				for _, sector := range district.Sectors{
-					for _, cell := range sector.Cells{
-						villages = append(villages, cell.Villages...)
-					}
-				}
-				return villages
-			}
-		}
-	}
-	return []Village{}
-}
-// get all villages in a province
-func GetVillagesInProvince(provinceId int) []Village{
-	LoadData()
-	for _, province := range Data.Provinces{
-		if province.Id == provinceId{
-			var villages []Village
-			for _, district := range province.Districts{
-				for _, sector := range district.Sectors{
-					for _, cell := range sector.Cells{
-						villages = append(villages, cell.Villages...)
-					}
-				}
-			}
-			return villages
-		}
-	}
-	return []Village{}
-}
-// get all cells in a district
-func GetCellsInDistrict(districtId int) []Cell{
-	LoadData()
-	for _, province := range Data.Provinces{
-		for _, district := range province.Districts{
-			if district.Id == districtId{
-				var cells []Cell
-				for _, sector := range district.Sectors{
-					cells = append(cells, sector.Cells...)
-				}
-				return cells
-			}
-		}
-	}
-	return []Cell{}
-}
-// get all cells in a province
-func GetCellsInProvince(provinceId int) []Cell{
-	LoadData()
-	for _, province := range Data.Provinces{
-		if province.Id == provinceId{
-			var cells []Cell
-			for _, district := range province.Districts{
-				for _, sector := range district.Sectors{
-					cells = append(cells, sector.Cells...)
-				}
-			}
-			return cells
-		}
-	}
-	return []Cell{}
-}
-// get all sectors in a province
-func GetSectorsInProvince(provinceId int) []Sector{
-	LoadData()
-	for _, province := range Data.Provinces{
-		if province.Id == provinceId{
-			var sectors []Sector
-			for _, district := range province.Districts{
-				sectors = append(sectors, district.Sectors...)
-			}
-			return sectors
-		}
-	}
-	return []Sector{}
 }
