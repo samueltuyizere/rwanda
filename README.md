@@ -6,9 +6,11 @@ This is a Go package which contains all administrative locations. I includes all
 
 Here are some examples of how to use this package:
 
+1. Install The package
 ```bash
 go get github.com/samueltuyizere/rwanda
 ```
+2. Import and use in your code
 
 ```go
 package main
@@ -24,7 +26,8 @@ func main(){
 ```
 
 ## Upcoming
-[] Tests
+- [] Tests
+
 
 ## Contributing
 
@@ -38,4 +41,4 @@ We welcome contributions from the community! If you're interested in contributin
 
 Please ensure that your contributions adhere to our code of conduct and follow the established coding style.
 
-Thank you for considering contributing to thi package!
+Thank you for considering contributing to this package!
