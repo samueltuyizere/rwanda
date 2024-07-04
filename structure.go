@@ -1,34 +1,34 @@
 package rwanda
 
 type Province struct{
-	Id string `json:"id"`
+	Id int `json:"id"`
 	Name string `json:"name"`
 	Districts []District
 }
 
 type District struct{
-	Id string `json:"id"`
+	Id int `json:"id"`
 	Name string `json:"name"`
-	ProvinceId string `json:"province_id"`
+	ProvinceId int `json:"province_id"`
 	Sectors []Sector
 }
 
 type Sector struct{
-	Id string `json:"id"`
+	Id int `json:"id"`
 	Name string `json:"name"`
-	DistrictId string `json:"district_id"`
+	DistrictId int `json:"district_id"`
 	Cells []Cell
 }
 
 type Cell struct{
-	Id string `json:"id"`
+	Id int `json:"id"`
 	Name string `json:"name"`
-	SectorId string `json:"sector_id"`
+	SectorId int `json:"sector_id"`
 	Villages []Village
 }
 
 type Village struct{
-	Id string `json:"id"`
+	Id int `json:"id"`
 	Name string `json:"name"`
-	CellId string `json:"cell_id"`
+	CellId int `json:"cell_id"`
 }

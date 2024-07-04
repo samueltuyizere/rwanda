@@ -11,7 +11,7 @@ func GetAllProvinces() []Province{
 	return Data.Provinces
 }
 // get a province by id
-func GetProvinceById(id string) Province{
+func GetProvinceById(id int) Province{
 	LoadData()
 	for _, province := range Data.Provinces{
 		if province.Id == id{
@@ -30,7 +30,7 @@ func GetAllDistricts() []District{
 	return districts
 }
 // get a district by id
-func GetDistrictById(id string) District{
+func GetDistrictById(id int) District{
 	LoadData()
 	for _, province := range Data.Provinces{
 		for _, district := range province.Districts{
@@ -42,7 +42,7 @@ func GetDistrictById(id string) District{
 	return District{}
 }
 // get all districts in a province
-func GetDistrictsInProvince(provinceId string) []District{
+func GetDistrictsInProvince(provinceId int) []District{
 	LoadData()
 	for _, province := range Data.Provinces{
 		if province.Id == provinceId{
@@ -63,7 +63,7 @@ func GetAllSectors() []Sector{
 	return sectors
 }
 // get a sector by id
-func GetSectorById(id string) Sector{
+func GetSectorById(id int) Sector{
 	LoadData()
 	for _, province := range Data.Provinces{
 		for _, district := range province.Districts{
@@ -77,7 +77,7 @@ func GetSectorById(id string) Sector{
 	return Sector{}
 }
 // get all sectors in a district
-func GetSectorsInDistrict(districtId string) []Sector{
+func GetSectorsInDistrict(districtId int) []Sector{
 	LoadData()
 	for _, province := range Data.Provinces{
 		for _, district := range province.Districts{
@@ -102,7 +102,7 @@ func GetAllCells() []Cell{
 	return cells
 }
 // get a cell by id
-func GetCellById(id string) Cell{
+func GetCellById(id int) Cell{
 	LoadData()
 	for _, province := range Data.Provinces{
 		for _, district := range province.Districts{
@@ -118,7 +118,7 @@ func GetCellById(id string) Cell{
 	return Cell{}
 }
 // get all cells in a sector
-func GetCellsInSector(sectorId string) []Cell{
+func GetCellsInSector(sectorId int) []Cell{
 	LoadData()
 	for _, province := range Data.Provinces{
 		for _, district := range province.Districts{
@@ -147,7 +147,7 @@ func GetAllVillages() []Village{
 	return villages
 }
 // get a village by id
-func GetVillageById(id string) Village{
+func GetVillageById(id int) Village{
 	LoadData()
 	for _, province := range Data.Provinces{
 		for _, district := range province.Districts{
@@ -165,7 +165,7 @@ func GetVillageById(id string) Village{
 	return Village{}
 }
 // get all villages in a cell
-func GetVillagesInCell(cellId string) []Village{
+func GetVillagesInCell(cellId int) []Village{
 	LoadData()
 	for _, province := range Data.Provinces{
 		for _, district := range province.Districts{
@@ -181,7 +181,7 @@ func GetVillagesInCell(cellId string) []Village{
 	return []Village{}
 }
 // get all villages in a sector
-func GetVillagesInSector(sectorId string) []Village{
+func GetVillagesInSector(sectorId int) []Village{
 	LoadData()
 	for _, province := range Data.Provinces{
 		for _, district := range province.Districts{
@@ -199,7 +199,7 @@ func GetVillagesInSector(sectorId string) []Village{
 	return []Village{}
 }
 // get all villages in a district
-func GetVillagesInDistrict(districtId string) []Village{
+func GetVillagesInDistrict(districtId int) []Village{
 	LoadData()
 	for _, province := range Data.Provinces{
 		for _, district := range province.Districts{
@@ -217,7 +217,7 @@ func GetVillagesInDistrict(districtId string) []Village{
 	return []Village{}
 }
 // get all villages in a province
-func GetVillagesInProvince(provinceId string) []Village{
+func GetVillagesInProvince(provinceId int) []Village{
 	LoadData()
 	for _, province := range Data.Provinces{
 		if province.Id == provinceId{
@@ -235,7 +235,7 @@ func GetVillagesInProvince(provinceId string) []Village{
 	return []Village{}
 }
 // get all cells in a district
-func GetCellsInDistrict(districtId string) []Cell{
+func GetCellsInDistrict(districtId int) []Cell{
 	LoadData()
 	for _, province := range Data.Provinces{
 		for _, district := range province.Districts{
@@ -251,7 +251,7 @@ func GetCellsInDistrict(districtId string) []Cell{
 	return []Cell{}
 }
 // get all cells in a province
-func GetCellsInProvince(provinceId string) []Cell{
+func GetCellsInProvince(provinceId int) []Cell{
 	LoadData()
 	for _, province := range Data.Provinces{
 		if province.Id == provinceId{
@@ -267,7 +267,7 @@ func GetCellsInProvince(provinceId string) []Cell{
 	return []Cell{}
 }
 // get all sectors in a province
-func GetSectorsInProvince(provinceId string) []Sector{
+func GetSectorsInProvince(provinceId int) []Sector{
 	LoadData()
 	for _, province := range Data.Provinces{
 		if province.Id == provinceId{
