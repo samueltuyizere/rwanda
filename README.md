@@ -8,7 +8,7 @@ Here are some examples of how to use this package:
 
 1. Install The package
 ```bash
-go get github.com/samueltuyizere/rwanda
+go get github.com/samueltuyizere/rwanda@latest
 ```
 2. Import and use in your code
 

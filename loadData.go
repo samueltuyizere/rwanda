@@ -1,10 +1,15 @@
 package rwanda
 
 import (
+	"bytes"
+	"embed"
 	"encoding/json"
+	"fmt"
 	"io"
-	"os"
 )
+
+//go:embed data.json
+var dataFS embed.FS
 
 type AllData struct {
 	Provinces []Province
@@ -13,13 +18,25 @@ type AllData struct {
 var Data *AllData
 
 func LoadData() {
-	jsonFile, err := os.Open("./data.json")
-	if err != nil {
-		panic(err)
-	}
-	defer jsonFile.Close()
+    file, err := OpenEmbeddedFile("data.json")
+    if err != nil {
+        panic(err)
+    }
 
-	byteValue, _ := io.ReadAll(jsonFile)
+    byteValue, err := io.ReadAll(file)
+    if err != nil {
+        panic(err)
+    }
 
-	json.Unmarshal(byteValue, &Data)
+    err = json.Unmarshal(byteValue, &Data)
+    if err != nil {
+        panic(err)
+    }
+}
+func OpenEmbeddedFile(name string) (io.Reader, error) {
+    data, err := dataFS.ReadFile(name)
+    if err != nil {
+        return nil, fmt.Errorf("failed to read embedded file: %w", err)
+    }
+    return bytes.NewReader(data), nil
 }
