@@ -14,7 +14,7 @@ var dataFS embed.FS
 type AllData struct {
 	Provinces []Province
 }
-
+var PreprocessedData *[]AllData
 var Data *AllData
 
 func LoadData() {
@@ -28,7 +28,8 @@ func LoadData() {
         panic(err)
     }
 
-    err = json.Unmarshal(byteValue, &Data)
+    err = json.Unmarshal(byteValue, &PreprocessedData)
+    Data = &(*PreprocessedData)[0]
     if err != nil {
         panic(err)
     }
