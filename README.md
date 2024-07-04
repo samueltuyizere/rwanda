@@ -26,6 +26,25 @@ func main(){
 ```
 
 ## Upcoming
+- #### Provincial Level
+- [x] get all provinces as standalone entities
+- [ ] get all districts in a province
+- [ ] get all sectors in a province
+- [ ] get all cells in a province
+- [ ] get all villages in a province
+- #### District Level
+- [x] get all districts as standalone entities
+- [ ] get all sectors in a district
+- [ ] get all cells in a district
+- [ ] get all villages in a district
+- #### Sector Level
+- [x] get all sectors as standalone entities
+- [ ] get all cells in a sector
+- [ ] get all villages in a sector
+- #### Cell Level
+- [x] get all cells as standalone entities
+- [ ] get all villages in a cell
+- #### Misc tasks
 - [ ] Tests
 
 
