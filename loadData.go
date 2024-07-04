@@ -11,25 +11,18 @@ import (
 //go:embed data.json
 var dataFS embed.FS
 
-type AllData struct {
-	Provinces []Province
-}
-var PreprocessedData *[]AllData
-var Data *AllData
+var Data Provinces
 
 func LoadData() {
     file, err := OpenEmbeddedFile("data.json")
     if err != nil {
         panic(err)
     }
-
     byteValue, err := io.ReadAll(file)
     if err != nil {
         panic(err)
     }
-
-    err = json.Unmarshal(byteValue, &PreprocessedData)
-    Data = &(*PreprocessedData)[0]
+    err = json.Unmarshal(byteValue, &Data)
     if err != nil {
         panic(err)
     }
