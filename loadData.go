@@ -13,7 +13,7 @@ type AllData struct {
 var Data *AllData
 
 func LoadData() {
-	jsonFile, err := os.Open("data.json")
+	jsonFile, err := os.Open("./data.json")
 	if err != nil {
 		panic(err)
 	}
